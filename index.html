@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Primary Meta Tags -->
+<title>CraftRealm</title>
+<meta name="title" content="CraftRealm">
+<meta name="description" content="Towny / Creative Network">
+<link rel="icon" href="https://github.com/CraftRealm.png">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://craftrealm.org/">
+<meta property="og:title" content="CraftRealm">
+<meta property="og:description" content="Towny / Creative Network">
+<meta property="og:image" content="https://github.com/CraftRealm.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://craftrealm.org/">
+<meta property="twitter:title" content="CraftRealm">
+<meta property="twitter:description" content="Towny / Creative Network">
+<meta property="twitter:image" content="hhttps://github.com/CraftRealm.png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
+  <link rel="stylesheet" href="css/coolStuff.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/regular.min.css" integrity="sha512-XE9wQlFttk3S1cE3YxkSCTl/TSs3SYYiO0x5RlZ3oxWkk/qSmqQLgdoPF67ndBq1ayu2EnaQ2cpQ5XTvtkvllg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script type="text/javascript" defer src="https://donorbox.org/install-popup-button.js"></script>
+<script>window.DonorBox = { widgetLinkClassName: 'custom-dbox-popup' }</script>
+<style>
+.youtube {
+	position: relative;
+  top: 45%;
+  transform: translateY(-50%);
+}
+
+</style>
+</head>
+
+<body>
+	<div class="jumbotron bg-transparent mb-0 radius-0 vertical-center">
+		<div class="container load" id="container">
+			<div class="row">
+				<div class="col-xl-6">
+					<h1 class="display-2">CraftRealm</h1>
+					<div class="lead mb-3 text-mono text-success">Towny / Creative Network</div>
+					<div class="text-mono">
+						<a href="/docs/" target="_blank" class="btn btn-success btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">Docs</a>
+						<a href="https://map.craftrealm.org" target="_blank" class="btn btn-info btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">Live Map</a>
+						<a href="https://discord.gg/dwWytrA" target="_blank" class="btn btn-primary btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left" data-type="theme">Discord</a>
+						<a type="button" href="https://donorbox.org/craftrealm" class="btn btn-warning btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left custom-dbox-popup">Donate</a>
+					</div>
+					<br>
+					<div id="stats">
+						<p class="mt-1 text-grey text-spacey">
+              Status: <a class="loading" id="loading1"></a><a id="srvStatus"></a>
+			  <br>IP Address: <code><a id="color">play.craftrealm.org</a></code>  <a onclick="copyAdd()"><i class="fas fa-copy"></i></a>
+							<br>Version: <a id="version">1.18.1</a>
+              <br>Lifetime: <a id="lifetime"></a>
+						</p>
+					</div>
+
+          <p class="mt-1 text-grey text-spacey">
+            Services provided are free, but the server I rent isn't :(<br>You can help support the server by donating &#60;3
+          </p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+		<script>
+
+			$.getJSON('https://api.mcsrvstat.us/2/play.craftrealm.org', function(status) {
+				if (status.online == true) {
+					document.getElementById('loading1').style.display = "none";
+					document.getElementById("srvStatus").classList.add("text-success")
+					document.getElementById("srvStatus").innerHTML = "Online!";
+				} else {
+					document.getElementById('loading1').style.display = "none";
+					document.getElementById("srvStatus").classList.add("text-danger")
+					document.getElementById("srvStatus").innerHTML = "Offline...";
+			}
+			});
+
+			function copyAdd() {
+				navigator.clipboard.writeText("play.craftrealm.com").then(function() {
+					alert("Copied to clipboard!")
+				}, function() {
+					alert("Failed, please manually copy.")
+				});
+			}
+
+			function leave() {
+				var cont = document.getElementById('container');
+				var delayInMilliseconds = 1000;
+				cont.addEventListener("animationend", function() {
+					document.location.href = "index.html"
+				});
+				cont.classList.add("leave");
+			}
+		var d = new Date(2022, 0, 15);
+		const diffTime = Math.abs(Date.now() - d);
+		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+		document.getElementById('lifetime').innerHTML = diffDays + " days";
+
+		var r=255,g=0,b=0;
+
+		setInterval(function(){
+		if(r > 0 && b == 0){
+			r--;
+			g++;
+		}
+		if(g > 0 && r == 0){
+			g--;
+			b++;
+		}
+		if(b > 0 && g == 0){
+			r++;
+			b--;
+		}
+		$("#color").css("color","rgb("+r+","+g+","+b+")");
+		},10);
+</script>
+</body>
+</html>

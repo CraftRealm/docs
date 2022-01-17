@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcraft_realm_docs=self.webpackChunkcraft_realm_docs||[]).push([[535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Server launch!","permalink":"/blog/launch"}]}')}}]);

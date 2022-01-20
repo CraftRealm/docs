@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'CraftRealm', // Usually your GitHub org/user name.
-  projectName: 'management', // Usually your repo name.
+  projectName: 'docs', // Usually your repo name.
 
   presets: [
     [
@@ -42,11 +42,30 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+        switchConfig: {
+          darkIcon: '🌙',
+          darkIconStyle: {
+            marginLeft: '2px',
+          },
+          // Unicode icons such as '\u2600' will work
+          // Unicode with 5 chars require brackets: '\u{1F602}'
+          lightIcon: '💡',
+          lightIconStyle: {
+            marginLeft: '1px',
+          },
+        },
+      },
       navbar: {
         title: 'CraftRealm',
         logo: {
           alt: 'CraftRealm Logo',
           src: 'img/logo.png',
+          href: 'https://craftrealm.org', // Default to `siteConfig.baseUrl`.
+          target: '_self', 
         },
         items: [
           {

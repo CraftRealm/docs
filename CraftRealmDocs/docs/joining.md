@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+title: How to join
 ---
 
 # How to join CraftRealm
